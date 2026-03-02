@@ -1,0 +1,38 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors / IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+
+# Env files
+.env
+.env.*
+
+# Logs
+*.log
+
+# Node / Frontend
+node_modules/
+dist/
+build/
+.npm/
+
+# Project-specific generated files
+nutrition-ai-agent/data/generated_plans/
+nutrition-ai-agent/data/.faiss_cache/

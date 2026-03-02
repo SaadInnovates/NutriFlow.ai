@@ -1,0 +1,19 @@
+{
+  "report_title": "Nutrition AI Agent Report",
+  "company_name": "Nutrition AI Agent",
+  "colors": {
+    "header_text": "#202738",
+    "header_line": "#D2D6DC",
+    "cover_fill": "#ECF4FF",
+    "title_text": "#141E32",
+    "body_text": "#232A3A",
+    "muted_text": "#787D87"
+  },
+  "typography": {
+    "font_family": "Helvetica",
+    "font_size_body": 11,
+    "font_size_title": 22,
+    "font_size_heading": 13,
+    "font_size_meta": 9
+  }
+}
