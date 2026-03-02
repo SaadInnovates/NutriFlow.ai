@@ -245,24 +245,24 @@ Create a `.env` file in the project root.
 - `GROQ_API_KEY` (required unless user sets key in profile)
 - `GROQ_MODEL` (default: `llama-3.1-8b-instant`)
 - `MODEL_TEMPERATURE` (default: `0.2`)
-- `MODEL_MAX_TOKENS` (default: `3200`)
-- `MODEL_MAX_CONTINUATION_ATTEMPTS` (default: `2`)
+- `MODEL_MAX_TOKENS` (default: `1800`)
+- `MODEL_MAX_CONTINUATION_ATTEMPTS` (default: `1`)
 
 ### RAG / Retrieval
 
 - `EMBEDDING_MODEL` (default: `sentence-transformers/all-MiniLM-L6-v2`)
 - `CHUNK_SIZE` (default: `700`)
 - `CHUNK_OVERLAP` (default: `120`)
-- `RETRIEVAL_K` (default: `4`)
-- `PLAN_CONTEXT_MAX_CHARS` (default: `2800`)
+- `RETRIEVAL_K` (default: `3`)
+- `PLAN_CONTEXT_MAX_CHARS` (default: `2200`)
 - `NUTRITION_DOCS_DIR` (default: `data/nutrition_docs`)
 
 ### Performance / startup
 
 - `ENABLE_PLAN_CACHE` (default: `true`)
 - `PLAN_CACHE_TTL_SECONDS` (default: `900`)
-- `PRELOAD_VECTORSTORE_ON_STARTUP` (default: `false`)
-- `PRELOAD_AGENT_ON_STARTUP` (default: `false`)
+- `PRELOAD_VECTORSTORE_ON_STARTUP` (default: `true`)
+- `PRELOAD_AGENT_ON_STARTUP` (default: `true`)
 - `ENABLE_STARTUP_SECRET_SCAN` (default: `false`)
 
 ### Database
@@ -537,6 +537,22 @@ python -m unittest -q tests.test_api
 
 `vercel.json` maps all routes to `app/main.py` using `@vercel/python`.
 
+### Recommended Vercel setup (2 projects)
+
+1. Deploy backend as a Vercel project with root directory `nutrition-ai-agent`.
+2. Deploy frontend as a second Vercel project with root directory `nutrition-ai-agent/frontend`.
+3. Set frontend env var:
+
+- `VITE_API_BASE_URL=https://<your-backend-domain>/api`
+
+4. Set backend env vars from `.env.vercel.example`.
+5. Set backend CORS and frontend URLs to your deployed frontend domain:
+
+- `CORS_ORIGINS=https://<your-frontend-domain>`
+- `FRONTEND_BASE_URL=https://<your-frontend-domain>`
+
+Use `.env.vercel.example` in project root as your deployment variable checklist.
+
 ### Typical production recommendations
 
 - set strong `JWT_SECRET_KEY`
@@ -570,6 +586,11 @@ python -m unittest -q tests.test_api
 - Enable preloading:
   - `PRELOAD_VECTORSTORE_ON_STARTUP=true`
   - `PRELOAD_AGENT_ON_STARTUP=true`
+- Keep model/retrieval settings optimized for serverless cold starts:
+  - `MODEL_MAX_TOKENS=1800`
+  - `MODEL_MAX_CONTINUATION_ATTEMPTS=1`
+  - `RETRIEVAL_K=3`
+  - `PLAN_CONTEXT_MAX_CHARS=2200`
 
 ---
 
