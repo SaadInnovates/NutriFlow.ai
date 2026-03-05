@@ -4,7 +4,8 @@ Production-ready full-stack nutrition platform powered by FastAPI, React, MongoD
 
 This project supports secure user accounts, email verification/password reset, personalized diet plan generation, recipe generation, multi-mode nutrition chat, PDF export, and session-based conversation history.
 
----
+Watch the full project demo here:  
+👉 https://youtu.be/unt1LAGRTNQ
 
 ## Table of Contents
 
